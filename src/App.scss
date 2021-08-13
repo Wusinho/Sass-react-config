@@ -1,9 +1,8 @@
-$reactColor: #011826;
+$reactColor: #A8D145;
 
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 .app {
@@ -14,10 +13,10 @@ $reactColor: #011826;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: column-reverse;
   h1 {
     text-transform: uppercase;
-    font-family: sans-serif;
-    font-size: 3rem;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 5rem;
   }
 }

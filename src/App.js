@@ -3,8 +3,9 @@ import "./App.scss";
 function App() {
   return (
     <div className="app">
-      <h1>React + Webpack + SASS</h1>
-      <p>Mi primer proyecto de React con Webpack</p>
+      <h1>React</h1>
+      <h2>Webpack</h2>
+      <h3>SASS</h3>
     </div>
   );
 }
