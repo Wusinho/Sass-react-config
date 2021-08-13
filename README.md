@@ -14,9 +14,8 @@ Small project that show how to configure sass and react.
 - Open your terminal 
 - cd where you want to store the project
 - Run the following command - `git clone https://github.com/Wusinho/Sass-react-config.git`
-- Cd into the directory library-app
+- Cd into the directory 
 - Run `npm install` to install all dependencies
-- Run `npm start` or `yarn start`, this automatically open your browser and the app
 
 ## Author
 
@@ -27,5 +26,5 @@ Small project that show how to configure sass and react.
 
 ## In case you need the dependencies:
 
-npm i core-js react react-dom
-npm i -D @babel/core @babel/preset-env @babel/preset-react @pmmmwh/react-refresh-webpack-plugin babel-loader clean-webpack-plugin css-loader html-webpack-plugin mini-css-extract-plugin react-refresh sass sass-loader style-loader webpack webpack-cli webpack-dev-server webpack-merge
+- npm i core-js react react-dom
+- npm i -D @babel/core @babel/preset-env @babel/preset-react @pmmmwh/react-refresh-webpack-plugin babel-loader clean-webpack-plugin css-loader html-webpack-plugin mini-css-extract-plugin react-refresh sass sass-loader style-loader webpack webpack-cli webpack-dev-server webpack-merge
