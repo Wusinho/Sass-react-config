@@ -24,6 +24,9 @@ Small project that show how to configure sass and react.
 - Github: [@Wusinho](https://github.com/Wusinho)
 - LinkedIn: [Heber Lazo](https://www.linkedin.com/in/heber-lazo-benza-523266133/)
 
+## Show your support
+
+Give a star if you :star: like this project!
 ## In case you need the dependencies:
 
 - npm i core-js react react-dom
