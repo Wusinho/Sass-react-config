@@ -1,0 +1,2 @@
+npm i core-js react react-dom
+npm i -D @babel/core @babel/preset-env @babel/preset-react @pmmmwh/react-refresh-webpack-plugin babel-loader clean-webpack-plugin css-loader html-webpack-plugin mini-css-extract-plugin react-refresh sass sass-loader style-loader webpack webpack-cli webpack-dev-server webpack-merge
