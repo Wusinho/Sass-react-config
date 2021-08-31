@@ -7,7 +7,7 @@ const common = require("./webpack.common");
 const devConfig = {
   mode: "development",
   devServer: {
-    port: 3000,
+    port: 3001,
     contentBase: "../dist",
     open: "firefox", //No olviden cambiar esta opcion por su navegador preferido
     hot: true,
