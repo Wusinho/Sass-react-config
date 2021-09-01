@@ -9,7 +9,7 @@ const devConfig = {
   devServer: {
     port: 3001,
     contentBase: "../dist",
-    open: "firefox", //No olviden cambiar esta opcion por su navegador preferido
+    open: "firefox",
     hot: true,
   },
   target: "web",
