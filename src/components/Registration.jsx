@@ -5,7 +5,7 @@ const Registration = () => {
 const [ data, setData ] = useState({
   email: '',
   password: '',
-  password_confirmation: ''
+  // password_confirmation: ''
 })
 
   const handleChange = (e) => {
@@ -17,9 +17,10 @@ const [ data, setData ] = useState({
 
   const handleSubmit = (e) => {
     // console.log(data)
-    axios.post('http://localhost:3000/registrations', 
+    axios.post('http://localhost:3000/signup', 
       data
     ,
+    // {mode: 'cors'}
     // { withCredentials: true },
     ).then((response)=>{
       console.log('registation res', response)
@@ -46,13 +47,13 @@ const [ data, setData ] = useState({
             onChange={handleChange}
             required
           />
-          <input
+          {/* <input
             type="password"
             name="password_confirmation"
             placeholder="Password confirmation"
             onChange={handleChange}
             required
-          />
+          /> */}
           <button type='submit'>Register</button>
         </form>
   )
