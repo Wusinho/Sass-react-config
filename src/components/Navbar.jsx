@@ -6,6 +6,7 @@ import {
   logOut,
   selectIsLoggedIn,
 } from "../features/session/sessionSlice";
+import { loadlogin } from '../features/session/sessionSlice'
 
 // Import the NavNavLink component.
 import { NavLink } from "react-router-dom";
@@ -36,8 +37,8 @@ export default function Header() {
   };
 
   useEffect(()=>{
-    checkLoginStatus()
-  })
+    loadlogin()
+  },[])
 
   // if (loggedIn) console.log(currentUser)
   // Replace the 4 <a> tags with <NavNavLink> components

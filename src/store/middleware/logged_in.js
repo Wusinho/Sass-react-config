@@ -2,7 +2,7 @@ import axios from "axios";
 import * as actions from "../api";
 
 // eslint-disable-next-line consistent-return
-const api =
+const logged_in =
   ({ dispatch }) =>
   (next) =>
   (action) => {
@@ -14,7 +14,7 @@ const api =
     next(action);
 
     axios
-      .post(
+      .get(
         "http://localhost:3000/logged_in",
       {mode: 'cors'},
       { withCredentials: true }
@@ -29,4 +29,4 @@ const api =
       });
   };
 
-export default api;
+export default logged_in;
