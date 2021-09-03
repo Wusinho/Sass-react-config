@@ -26,7 +26,6 @@ const api =
       )
       .then((response) => {
         dispatch(actions.champCallSuccess(response));
-        console.log(response)
         if (onSuccess) dispatch({ type: onSuccess, payload: response.data });
       })
       .catch((error) => {

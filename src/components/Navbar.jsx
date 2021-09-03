@@ -14,7 +14,7 @@ export default function Header () {
   const handleLogout = e => {
     dispatch(logOut())
   }
-
+if (loggedIn) console.log(currentUser)
   // Replace the 4 <a> tags with <NavNavLink> components
   return (
     <div className="header">
@@ -23,7 +23,7 @@ export default function Header () {
       {
         loggedIn ?
           <>
-            <h2>{currentUser}</h2>
+            <h2>{currentUser.user.email}</h2>
             <button onClick={handleLogout} className="logout"> Log Out </button>
           </> : 
           <>
