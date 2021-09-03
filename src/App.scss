@@ -4,7 +4,19 @@ margin: 0px;
 
 .header {
   width: 100vw;
+  height: 5vh;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  background-color: rgb(82, 126, 91);
+}
+
+a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+a:hover{
+  color: white;
 }

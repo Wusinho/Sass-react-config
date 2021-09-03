@@ -36,7 +36,7 @@ export const sessionSlice = createSlice({
   },
 });
 
-export const selectCurrentUser = (state) => state.entities.session.list;
+export const selectCurrentUser = (state) => state.entities.session.user;
 export const selectIsLoggedIn = (state) => state.entities.session.isLoggedIn;
 export const {
   signUp,

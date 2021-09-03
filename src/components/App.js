@@ -7,12 +7,15 @@ import Home from "./Home";
 import Registration from "./Registration";
 import Navbar from "./Navbar";
 import Sign_in from "./Sign_in";
+import axios from 'axios'
 import { signUp, selectIsLoggedIn } from "../features/session/sessionSlice"
 import { useDispatch, useSelector } from "react-redux";
 
 import "../App.scss";
 
 const App = () => {
+
+
 
   return (
     <div>

@@ -20,9 +20,25 @@ export default function Header() {
     axios
       .delete("http://localhost:3000/logout", { withCredentials: true })
       .catch((err) => {
-        console.log('logout error', err);
+        console.log("logout error", err);
       });
   };
+
+  const checkLoginStatus = () => {
+    axios
+      .get("http://localhost:3000/logged_in", { withCredentials: true })
+      .then((response) => {
+        console.log("logged in?", response);
+      })
+      .catch((error) => {
+        console.log("login err", error);
+      });
+  };
+
+  useEffect(()=>{
+    checkLoginStatus()
+  })
+
   // if (loggedIn) console.log(currentUser)
   // Replace the 4 <a> tags with <NavNavLink> components
   return (
