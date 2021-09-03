@@ -1,3 +1,10 @@
+* {
+margin: 0px;
+}
+
 .header {
-  width: 500px;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }

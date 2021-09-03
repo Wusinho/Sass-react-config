@@ -8,7 +8,7 @@ const Dashboard = () => {
 const loggedIn = useSelector(selectIsLoggedIn);
 
   if (!loggedIn){
-    return <Redirect to='registration'/>  
+    return <Redirect to='sign_in'/>  
   }
   return (
     <div>
