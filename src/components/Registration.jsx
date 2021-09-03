@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
+import { signUp } from "../features/session/sessionSlice"
+import { useDispatch } from "react-redux";
 import axios from 'axios'
 
 const Registration = () => {
+  const dispatch = useDispatch();
 const [ data, setData ] = useState({
   email: '',
   password: '',
@@ -23,6 +26,13 @@ const [ data, setData ] = useState({
     // {mode: 'cors'},
     // { withCredentials: true },
     ).then((response)=>{
+      axios.post('http://localhost:3000/login', 
+      data,
+      ).then((res) =>{
+        console.log(res)
+      })
+
+      dispatch(signUp(response.data));
       console.log('registation res', response)
     }).catch((error)=>{
       console.log('registration error', error.message)
@@ -33,6 +43,7 @@ const [ data, setData ] = useState({
 
   return (
     <form onSubmit={handleSubmit}>
+      <h2>Registration</h2>
           <input
             type="email"
             name="email"
