@@ -1,6 +1,15 @@
 import React from 'react'
+import { selectIsLoggedIn } from "../features/session/sessionSlice";
+import { useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
+
 
 const Dashboard = () => {
+const loggedIn = useSelector(selectIsLoggedIn);
+
+  if (!loggedIn){
+    return <Redirect to='registration'/>  
+  }
   return (
     <div>
       <h1>Dashboard</h1>

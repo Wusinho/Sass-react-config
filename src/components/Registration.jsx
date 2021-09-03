@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
-import { signUp } from "../features/session/sessionSlice"
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from 'react'
+import { signUp, selectIsLoggedIn } from "../features/session/sessionSlice"
+import { useDispatch, useSelector } from "react-redux";
 import axios from 'axios'
+import { Redirect } from "react-router-dom";
 
 const Registration = () => {
+  const loggedIn = useSelector(selectIsLoggedIn);
   const dispatch = useDispatch();
-const [ data, setData ] = useState({
+  const [ data, setData ] = useState({
   email: '',
   password: '',
-  // password_confirmation: ''
+  password_confirmation: ''
 })
 
   const handleChange = (e) => {
@@ -19,27 +21,26 @@ const [ data, setData ] = useState({
   }
 
   const handleSubmit = (e) => {
-    // console.log(data)
-    axios.post('http://localhost:3000/signup', 
+    axios.post('http://localhost:3000/registrations', 
       data
     ,
-    // {mode: 'cors'},
-    // { withCredentials: true },
+    {mode: 'cors'},
+    { withCredentials: true },
     ).then((response)=>{
-      axios.post('http://localhost:3000/login', 
-      data,
-      ).then((res) =>{
-        console.log(res)
-      })
-
       dispatch(signUp(response.data));
-      console.log('registation res', response)
+    
     }).catch((error)=>{
       console.log('registration error', error.message)
     })
     e.preventDefault();
+ 
+    
   }
 
+  if (loggedIn){
+    return <Redirect to='/'/>  
+
+  } 
 
   return (
     <form onSubmit={handleSubmit}>
@@ -58,13 +59,13 @@ const [ data, setData ] = useState({
             onChange={handleChange}
             required
           />
-          {/* <input
+          <input
             type="password"
             name="password_confirmation"
             placeholder="Password confirmation"
             onChange={handleChange}
             required
-          /> */}
+          />
           <button type='submit'>Register</button>
         </form>
   )

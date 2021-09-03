@@ -1,5 +1,6 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
+import axios from 'axios'
 import { selectCurrentUser, logOut } from "../features/session/sessionSlice";
 
 // Import the NavNavLink component.
@@ -12,7 +13,8 @@ export default function Header () {
   const handleLogout = e => {
     dispatch(logOut())
   }
-console.log(currentUser)
+  if (currentUser) console.log(currentUser.email)
+
   // Replace the 4 <a> tags with <NavNavLink> components
   return (
     <div className="header">
@@ -20,9 +22,9 @@ console.log(currentUser)
       <NavLink to="/dashboard">Dashboard</NavLink> 
       {/* <NavLink to="/categories">Categories</NavLink> */}
       {
-        currentUser?
+        currentUser ?
           <>
-            <h2>{currentUser}</h2>
+            <h2>{currentUser.email}</h2>
             <button onClick={handleLogout} className="logout"> Log Out </button>
           </> : 
             <NavLink to="/registration">Registration</NavLink> 
