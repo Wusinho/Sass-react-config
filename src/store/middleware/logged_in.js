@@ -6,30 +6,25 @@ const api =
   ({ dispatch }) =>
   (next) =>
   (action) => {
-    if (action.type !== actions.apiCallBegan.type) return next(action);
+    if (action.type !== actions.logCallBegan.type) return next(action);
 
-    const { data, onStart, onSuccess, onError } = action.payload;
+    const { onStart, onSuccess, onError } = action.payload;
 
-    const { email, password } = data;
     if (onStart) dispatch({ type: onStart });
     next(action);
 
     axios
       .post(
-        "http://localhost:3000/sessions",
-      {
-        email: email,
-        password: password,
-      },
+        "http://localhost:3000/logged_in",
       {mode: 'cors'},
       { withCredentials: true }
       )
       .then((response) => {
-        dispatch(actions.apiCallSuccess(response));
+        dispatch(actions.logCallSuccess(response));
         if (onSuccess) dispatch({ type: onSuccess, payload: response.data });
       })
       .catch((error) => {
-        dispatch(actions.apiCallFailed(error.message));
+        dispatch(actions.logCallFailed(error.message));
         if (onError) dispatch({ type: onError, payload: error.message });
       });
   };

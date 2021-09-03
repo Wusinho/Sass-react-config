@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { apiCallBegan } from '../../store/api';
+import { apiCallBegan, logCallBegan } from '../../store/api';
 
 // import { createSelector } from 'reselect';
 
@@ -33,6 +33,17 @@ export const sessionSlice = createSlice({
     apiRequestFailed: (api) => {
       api.loading = false;
     },
+    logRequested: (api) => {
+      api.loading = true;
+    },
+    logReceived: (api, action) => {
+      api.list = action.payload;
+      api.isLoggedIn = true;
+      api.loading = false;
+    },
+    logRequestFailed: (api) => {
+      api.loading = false;
+    },
   },
 });
 
@@ -45,6 +56,9 @@ export const {
   apiRequested,
   apiReceived,
   apiRequestFailed,
+  logReceived,
+  logRequestFailed,
+  logRequested,
 } = sessionSlice.actions;
 export default sessionSlice.reducer;
 
@@ -56,4 +70,11 @@ export const loadapi = (data) => apiCallBegan({
   onStart: apiRequested.type,
   onSuccess: apiReceived.type,
   onError: apiRequestFailed.type,
+});
+
+export const loadlogin = () => logCallBegan({
+  url,
+  onStart: logRequested.type,
+  onSuccess: logReceived.type,
+  onError: logRequestFailed.type,
 });
