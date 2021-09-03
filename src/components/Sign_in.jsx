@@ -3,9 +3,11 @@ import { signUp, selectIsLoggedIn } from "../features/session/sessionSlice"
 import { useDispatch, useSelector } from "react-redux";
 import axios from 'axios'
 import { Redirect } from "react-router-dom";
-import { loadchamps } from '../store/books'
+import { loadchamps } from '../features/session/sessionSlice'
 
 const Sign_in = () => {
+  const loggedIn = useSelector(selectIsLoggedIn);
+
   const dispatch = useDispatch();
   const [ data, setData ] = useState({
   email: '',
@@ -23,6 +25,11 @@ const Sign_in = () => {
     dispatch(loadchamps(data))
     e.preventDefault();
   }
+
+  if (loggedIn){
+    return <Redirect to='/dashboard'/>  
+
+  } 
 
   return (
     <form onSubmit={handleSubmit}>

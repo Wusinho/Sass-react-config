@@ -1,7 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
-import { createSelector } from 'reselect';
-import { apiCallBegan, champCallBegan } from './api';
+import { apiCallBegan } from './api';
 
 export const champSlice = createSlice({
   name: 'champs',

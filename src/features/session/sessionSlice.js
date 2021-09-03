@@ -1,11 +1,14 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
+import { apiCallBegan } from '../../store/api';
+
 // import { createSelector } from 'reselect';
 
 export const sessionSlice = createSlice({
-  name: 'session',
+  name: "session",
   initialState: {
     user: {},
-    isLoggedIn: false
+    isLoggedIn: false,
+    loading: false,
   },
   reducers: {
     signUp: (state, action) => {
@@ -18,19 +21,39 @@ export const sessionSlice = createSlice({
     logOut: (state, action) => {
       state.user = {};
       state.isLoggedIn = false;
-    }
-  }
+    },
+    champsRequested: (champs) => {
+      champs.loading = true;
+    },
+    champsReceived: (champs, action) => {
+      champs.list = action.payload;
+      champs.isLoggedIn = true;
+      champs.loading = false;
+    },
+    champsRequestFailed: (champs) => {
+      champs.loading = false;
+    },
+  },
 });
 
 export const selectCurrentUser = (state) => state.entities.session.user.user;
 export const selectIsLoggedIn = (state) => state.entities.session.isLoggedIn;
-export const { signUp, logOut, editUser } = sessionSlice.actions;
+export const {
+  signUp,
+  logOut,
+  editUser,
+  champsRequested,
+  champsReceived,
+  champsRequestFailed,
+} = sessionSlice.actions;
 export default sessionSlice.reducer;
 
-// export const selectIsLoggedIn = createSelector(
-//   (state) => state.session.isLoggedIn
-// );
+const url = '/champs';
 
-// export const selectCurrentUser = createSelector(
-//   (state) => state.session.user.user
-// );
+export const loadchamps = (data) => apiCallBegan({
+  url,
+  data,
+  onStart: champsRequested.type,
+  onSuccess: champsReceived.type,
+  onError: champsRequestFailed.type,
+});

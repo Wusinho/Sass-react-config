@@ -1,8 +1,6 @@
 import React, {useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import axios from 'axios'
 import { selectCurrentUser, logOut, selectIsLoggedIn } from "../features/session/sessionSlice";
-import {loadchamps} from '../store/books'
 
 
 // Import the NavNavLink component.
@@ -17,10 +15,6 @@ export default function Header () {
     dispatch(logOut())
   }
 
-  useEffect(()=>{
-    dispatch(loadchamps())
-  })
-
   // Replace the 4 <a> tags with <NavNavLink> components
   return (
     <div className="header">
@@ -29,7 +23,7 @@ export default function Header () {
       {
         loggedIn ?
           <>
-            <h2>{currentUser.email}</h2>
+            <h2>{currentUser}</h2>
             <button onClick={handleLogout} className="logout"> Log Out </button>
           </> : 
           <>
