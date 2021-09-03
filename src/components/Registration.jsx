@@ -20,7 +20,7 @@ const [ data, setData ] = useState({
     axios.post('http://localhost:3000/signup', 
       data
     ,
-    // {mode: 'cors'}
+    // {mode: 'cors'},
     // { withCredentials: true },
     ).then((response)=>{
       console.log('registation res', response)
