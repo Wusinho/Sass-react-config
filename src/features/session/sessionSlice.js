@@ -26,7 +26,7 @@ export const sessionSlice = createSlice({
       api.loading = true;
     },
     apiReceived: (api, action) => {
-      api.list = action.payload;
+      api.user = action.payload;
       api.isLoggedIn = true;
       api.loading = false;
     },
