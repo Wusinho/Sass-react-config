@@ -22,16 +22,16 @@ export const sessionSlice = createSlice({
       state.user = {};
       state.isLoggedIn = false;
     },
-    champsRequested: (champs) => {
-      champs.loading = true;
+    apiRequested: (api) => {
+      api.loading = true;
     },
-    champsReceived: (champs, action) => {
-      champs.list = action.payload;
-      champs.isLoggedIn = true;
-      champs.loading = false;
+    apiReceived: (api, action) => {
+      api.list = action.payload;
+      api.isLoggedIn = true;
+      api.loading = false;
     },
-    champsRequestFailed: (champs) => {
-      champs.loading = false;
+    apiRequestFailed: (api) => {
+      api.loading = false;
     },
   },
 });
@@ -42,18 +42,18 @@ export const {
   signUp,
   logOut,
   editUser,
-  champsRequested,
-  champsReceived,
-  champsRequestFailed,
+  apiRequested,
+  apiReceived,
+  apiRequestFailed,
 } = sessionSlice.actions;
 export default sessionSlice.reducer;
 
-const url = '/champs';
+const url = '/api';
 
-export const loadchamps = (data) => apiCallBegan({
+export const loadapi = (data) => apiCallBegan({
   url,
   data,
-  onStart: champsRequested.type,
-  onSuccess: champsReceived.type,
-  onError: champsRequestFailed.type,
+  onStart: apiRequested.type,
+  onSuccess: apiReceived.type,
+  onError: apiRequestFailed.type,
 });

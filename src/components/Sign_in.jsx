@@ -3,7 +3,7 @@ import { signUp, selectIsLoggedIn } from "../features/session/sessionSlice"
 import { useDispatch, useSelector } from "react-redux";
 import axios from 'axios'
 import { Redirect } from "react-router-dom";
-import { loadchamps } from '../features/session/sessionSlice'
+import { loadapi } from '../features/session/sessionSlice'
 
 const Sign_in = () => {
   const loggedIn = useSelector(selectIsLoggedIn);
@@ -22,7 +22,7 @@ const Sign_in = () => {
   }
 
   const handleSubmit = (e) => {
-    dispatch(loadchamps(data))
+    dispatch(loadapi(data))
     e.preventDefault();
   }
 
