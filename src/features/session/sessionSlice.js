@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+// import { createSelector } from 'reselect';
 
 export const sessionSlice = createSlice({
   name: 'session',
@@ -21,7 +22,15 @@ export const sessionSlice = createSlice({
   }
 });
 
-export const selectCurrentUser = (state) => state.session.user.email;
-export const selectIsLoggedIn = (state) => state.session.isLoggedIn;
+export const selectCurrentUser = (state) => state.entities.session.user.user;
+export const selectIsLoggedIn = (state) => state.entities.session.isLoggedIn;
 export const { signUp, logOut, editUser } = sessionSlice.actions;
 export default sessionSlice.reducer;
+
+// export const selectIsLoggedIn = createSelector(
+//   (state) => state.session.isLoggedIn
+// );
+
+// export const selectCurrentUser = createSelector(
+//   (state) => state.session.user.user
+// );

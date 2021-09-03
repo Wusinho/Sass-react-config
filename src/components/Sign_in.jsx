@@ -3,14 +3,13 @@ import { signUp, selectIsLoggedIn } from "../features/session/sessionSlice"
 import { useDispatch, useSelector } from "react-redux";
 import axios from 'axios'
 import { Redirect } from "react-router-dom";
+import { loadchamps } from '../store/books'
 
-const Registration = () => {
-  const loggedIn = useSelector(selectIsLoggedIn);
+const Sign_in = () => {
   const dispatch = useDispatch();
   const [ data, setData ] = useState({
   email: '',
   password: '',
-  password_confirmation: ''
 })
 
   const handleChange = (e) => {
@@ -21,30 +20,13 @@ const Registration = () => {
   }
 
   const handleSubmit = (e) => {
-    axios.post('http://localhost:3000/registrations', 
-      data
-    ,
-    {mode: 'cors'},
-    { withCredentials: true },
-    ).then((response)=>{
-      dispatch(signUp(response.data));
-    
-    }).catch((error)=>{
-      console.log('registration error', error.message)
-    })
+    dispatch(loadchamps(data))
     e.preventDefault();
- 
-    
   }
-
-  if (loggedIn){
-    return <Redirect to='/dashboard'/>  
-
-  } 
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Registration</h2>
+      <h2>Sing In</h2>
       <input
         type="email"
         name="email"
@@ -59,16 +41,9 @@ const Registration = () => {
         onChange={handleChange}
         required
       />
-      <input
-        type="password"
-        name="password_confirmation"
-        placeholder="Password confirmation"
-        onChange={handleChange}
-        required
-      />
-      <button type='submit'>Register</button>
+      <button type='submit'>Log In</button>
     </form>
   )
 }
 
-export default Registration
+export default Sign_in
