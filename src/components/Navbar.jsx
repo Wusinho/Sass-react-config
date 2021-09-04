@@ -25,16 +25,16 @@ export default function Header() {
       });
   };
 
-  const checkLoginStatus = () => {
-    axios
-      .get("http://localhost:3000/logged_in", { withCredentials: true })
-      .then((response) => {
-        console.log("logged in?", response);
-      })
-      .catch((error) => {
-        console.log("login err", error);
-      });
-  };
+  // const checkLoginStatus = () => {
+  //   axios
+  //     .get("http://localhost:3000/logged_in", { withCredentials: true })
+  //     .then((response) => {
+  //       console.log("logged in?", response);
+  //     })
+  //     .catch((error) => {
+  //       console.log("login err", error);
+  //     });
+  // };
 
   useEffect(()=>{
     dispatch(loadlogin())

@@ -21,8 +21,8 @@ const api =
         email: email,
         password: password,
       },
-      {mode: 'cors'},
-      { withCredentials: true }
+      // {mode: 'cors'},
+      // { withCredentials: true }
       )
       .then((response) => {
         dispatch(actions.apiCallSuccess(response));

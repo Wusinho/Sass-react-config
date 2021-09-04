@@ -3,6 +3,7 @@ import { signUp, selectIsLoggedIn } from "../features/session/sessionSlice"
 import { useDispatch, useSelector } from "react-redux";
 import axios from 'axios'
 import { Redirect } from "react-router-dom";
+import { loadlogin } from '../features/session/sessionSlice'
 
 const Registration = () => {
   const loggedIn = useSelector(selectIsLoggedIn);
@@ -24,8 +25,8 @@ const Registration = () => {
     axios.post('http://localhost:3000/registrations', 
       data
     ,
-    {mode: 'cors'},
-    { withCredentials: true },
+    // {mode: 'cors'},
+    // { withCredentials: true },
     ).then((response)=>{
       dispatch(signUp(response.data));
     
