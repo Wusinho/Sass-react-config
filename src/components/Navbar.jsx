@@ -36,9 +36,9 @@ export default function Header() {
   //     });
   // };
 
-  useEffect(()=>{
-    dispatch(loadlogin())
-  })
+  // useEffect(()=>{
+  //   dispatch(loadlogin())
+  // })
 
   // if (loggedIn) console.log(currentUser)
   // Replace the 4 <a> tags with <NavNavLink> components
@@ -48,7 +48,7 @@ export default function Header() {
       <NavLink to="/dashboard">Dashboard</NavLink>
       {loggedIn ? (
         <>
-          <h2>{currentUser.user.email}</h2>
+          <h2></h2>
           <button onClick={handleLogout} className="logout">
             {" "}
             Log Out{" "}

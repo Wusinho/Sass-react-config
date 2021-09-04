@@ -22,11 +22,11 @@ const Registration = () => {
   }
 
   const handleSubmit = (e) => {
-    axios.post('http://localhost:3000/registrations', 
+    axios.post('http://localhost:3000/signup', 
       data
     ,
-    // {mode: 'cors'},
-    // { withCredentials: true },
+    {mode: 'cors'},
+    { withCredentials: true },
     ).then((response)=>{
       dispatch(signUp(response.data));
     

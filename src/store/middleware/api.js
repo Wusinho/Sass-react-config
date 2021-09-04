@@ -16,13 +16,13 @@ const api =
 
     axios
       .post(
-        "http://localhost:3000/sessions",
+        "http://localhost:3000/login",
       {
         email: email,
         password: password,
       },
-      // {mode: 'cors'},
-      // { withCredentials: true }
+      {mode: 'cors'},
+      { withCredentials: true }
       )
       .then((response) => {
         dispatch(actions.apiCallSuccess(response));
