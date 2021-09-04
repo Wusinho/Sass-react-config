@@ -9,6 +9,7 @@ export const sessionSlice = createSlice({
     user: {},
     isLoggedIn: false,
     loading: false,
+    list: {},
   },
   reducers: {
     signUp: (state, action) => {
@@ -38,7 +39,7 @@ export const sessionSlice = createSlice({
     },
     logReceived: (api, action) => {
       api.list = action.payload;
-      api.isLoggedIn = true;
+      // api.isLoggedIn = true;
       api.loading = false;
     },
     logRequestFailed: (api) => {
@@ -72,8 +73,10 @@ export const loadapi = (data) => apiCallBegan({
   onError: apiRequestFailed.type,
 });
 
+const url2 = '/log'
+
 export const loadlogin = () => logCallBegan({
-  url,
+  url2,
   onStart: logRequested.type,
   onSuccess: logReceived.type,
   onError: logRequestFailed.type,

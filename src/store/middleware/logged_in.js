@@ -20,10 +20,12 @@ const logged_in =
       { withCredentials: true }
       )
       .then((response) => {
+        console.log(response)
         dispatch(actions.logCallSuccess(response));
         if (onSuccess) dispatch({ type: onSuccess, payload: response.data });
       })
       .catch((error) => {
+        console.log(error)
         dispatch(actions.logCallFailed(error.message));
         if (onError) dispatch({ type: onError, payload: error.message });
       });
