@@ -19,7 +19,7 @@ export default function Header() {
   const handleLogout = (e) => {
     dispatch(logOut());
     axios
-      .delete("http://localhost:3000/logout", { withCredentials: true })
+      .delete("http://localhost:3000/logout",{mode: 'cors'}, { withCredentials: true })
       .catch((err) => {
         console.log("logout error", err);
       });
