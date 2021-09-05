@@ -20,7 +20,7 @@ const logged_in =
       // { withCredentials: true }
       )
       .then((response) => {
-        console.log(response.data)
+        // console.log(response.data)
         dispatch(actions.logCallSuccess(response));
         if (onSuccess) dispatch({ type: onSuccess, payload: response.data });
       })

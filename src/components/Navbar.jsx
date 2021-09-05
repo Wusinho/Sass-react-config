@@ -25,22 +25,11 @@ export default function Header() {
       });
   };
 
-  // const checkLoginStatus = () => {
-  //   axios
-  //     .get("http://localhost:3000/logged_in", { withCredentials: true })
-  //     .then((response) => {
-  //       console.log("logged in?", response);
-  //     })
-  //     .catch((error) => {
-  //       console.log("login err", error);
-  //     });
-  // };
+  useEffect(()=>{
+    dispatch(loadlogin())
+  })
 
-  // useEffect(()=>{
-  //   dispatch(loadlogin())
-  // })
-
-  // if (loggedIn) console.log(currentUser)
+  if (loggedIn) console.log(currentUser)
   // Replace the 4 <a> tags with <NavNavLink> components
   return (
     <div className="header">

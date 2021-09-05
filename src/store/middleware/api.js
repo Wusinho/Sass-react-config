@@ -16,7 +16,7 @@ const api =
 
     axios
       .post(
-        "http://localhost:3000/login",
+        "http://localhost:3000//sessions",
       {
         email: email,
         password: password,
