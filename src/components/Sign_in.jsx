@@ -11,7 +11,7 @@ const Sign_in = () => {
 
   const dispatch = useDispatch();
   const [ data, setData ] = useState({
-  email: '',
+  username: '',
   password: '',
 })
 
@@ -24,12 +24,10 @@ const Sign_in = () => {
 
   const handleSubmit = (e) => {
     dispatch(loadapi(data))
-  dispatch(loadlogin())
+  // dispatch(loadlogin())
 
     e.preventDefault();
   }
-
-
 
   if (loggedIn){
     return <Redirect to='/dashboard'/>  
@@ -40,9 +38,9 @@ const Sign_in = () => {
     <form onSubmit={handleSubmit}>
       <h2>Sing In</h2>
       <input
-        type="email"
-        name="email"
-        placeholder="email@gmail.com"
+        type="text"
+        name="username"
+        placeholder="username"
         onChange={handleChange}
         required
       />

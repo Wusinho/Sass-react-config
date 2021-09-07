@@ -10,19 +10,17 @@ const api =
 
     const { data, onStart, onSuccess, onError } = action.payload;
 
-    const { email, password } = data;
+    const { username, password } = data;
     if (onStart) dispatch({ type: onStart });
     next(action);
 
     axios
       .post(
-        "http://localhost:3000//sessions",
+        "http://localhost:3000/login",
       {
-        email: email,
+        username: username,
         password: password,
       },
-      {mode: 'cors'},
-      { withCredentials: true }
       )
       .then((response) => {
         dispatch(actions.apiCallSuccess(response));

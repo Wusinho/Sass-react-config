@@ -9,7 +9,7 @@ const Registration = () => {
   const loggedIn = useSelector(selectIsLoggedIn);
   const dispatch = useDispatch();
   const [ data, setData ] = useState({
-  email: '',
+  username: '',
   password: '',
   password_confirmation: ''
 })
@@ -22,11 +22,14 @@ const Registration = () => {
   }
 
   const handleSubmit = (e) => {
-    axios.post('http://localhost:3000/registrations', 
+    const headers = {
+      "Access-Control-Allow-Origin": "*"
+    }
+    axios.post(
+      'http://localhost:3000/user',
       data
     ,
-    // {mode: 'cors'},
-    // { withCredentials: true },
+    { headers: headers},
     ).then((response)=>{
       dispatch(signUp(response.data));
     
@@ -47,9 +50,9 @@ const Registration = () => {
     <form onSubmit={handleSubmit}>
       <h2>Registration</h2>
       <input
-        type="email"
-        name="email"
-        placeholder="email@gmail.com"
+        type="username"
+        name="username"
+        placeholder="username"
         onChange={handleChange}
         required
       />

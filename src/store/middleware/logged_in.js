@@ -15,12 +15,10 @@ const logged_in =
 
     axios
       .get(
-        "http://localhost:3000/logged_in",
-      // {mode: 'cors'},
-      // { withCredentials: true }
+        "http://localhost:3000/auto_login",
       )
       .then((response) => {
-        // console.log(response.data)
+        console.log(response.data)
         dispatch(actions.logCallSuccess(response));
         if (onSuccess) dispatch({ type: onSuccess, payload: response.data });
       })

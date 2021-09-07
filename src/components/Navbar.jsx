@@ -25,9 +25,9 @@ export default function Header() {
       });
   };
 
-  useEffect(()=>{
-    dispatch(loadlogin())
-  })
+  // useEffect(()=>{
+  //   dispatch(loadlogin())
+  // })
 
   if (loggedIn) console.log(currentUser)
   // Replace the 4 <a> tags with <NavNavLink> components
