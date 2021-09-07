@@ -24,7 +24,6 @@ const Sign_in = () => {
 
   const handleSubmit = (e) => {
     dispatch(loadapi(data))
-  // dispatch(loadlogin())
 
     e.preventDefault();
   }

@@ -37,8 +37,6 @@ const Registration = () => {
       console.log('registration error', error.message)
     })
     e.preventDefault();
- 
-    
   }
 
   if (loggedIn){

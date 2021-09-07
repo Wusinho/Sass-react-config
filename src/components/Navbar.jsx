@@ -29,7 +29,6 @@ export default function Header() {
   //   dispatch(loadlogin())
   // })
 
-  if (loggedIn) console.log(currentUser)
   // Replace the 4 <a> tags with <NavNavLink> components
   return (
     <div className="header">
