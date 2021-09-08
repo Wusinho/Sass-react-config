@@ -6,7 +6,7 @@ import { Redirect } from "react-router-dom";
 import { loadlogin } from '../features/session/sessionSlice'
 
 const Registration = () => {
-  const [ data, setData ] = useState([])
+  const [ appointments, setAppointments ] = useState([])
   const [ booking, setBooking ] = useState()
   const getToken = useSelector((state) => state.entities.session.user.token)
   const getID = useSelector((state) => state.entities.session.user.user.id)
@@ -15,13 +15,12 @@ const Registration = () => {
     "Authorization": `bearer ${getToken}`
   }
 
-  
   const getApointments = () => {
     axios.get(
-      'http://localhost:3000/users',
+      `http://localhost:3000/users/${getID}`,
     { headers: headers},
     ).then((response)=>{
-      setData(response.data);
+      setAppointments(response.data.attendances);
     
     }).catch((error)=>{
       console.log('registration error', error.message)
@@ -29,24 +28,23 @@ const Registration = () => {
   }
   useEffect(()=>{
     getApointments()
-  },[])
-  console.log(data)
-
-  // const dataLoop = data.map((item) => {
-  //   Object.entries(item).map((nested) => {
-  //     console.log(item.id, 'itemd ID ')
-  //     console.log(nested[0], '0')
-  //     console.log(nested[1], '1')
-  //   })
-  // })
-
-  return data.map((item) => {
-    Object.entries(item).map((nested) => {
-      <div key={item.id}>
-          <h4>{item.id}</h4>
-      </div>
-    })
   })
+
+  const renderApp = () => 
+    appointments.map((book) =>
+    <div key={book.id}>
+      <h4>{book.id}</h4>
+      <h4>{book.country}</h4>
+      <h4>{book.date}</h4>
+      <h4>{book.car_id}</h4>
+    </div>
+    )
+
+  return (
+    <div>
+      { appointments.length ? renderApp() : <h2>Hello</h2> }
+    </div>
+  )
 }
 
 export default Registration
