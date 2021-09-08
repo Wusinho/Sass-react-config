@@ -6,21 +6,33 @@ import { Redirect } from "react-router-dom";
 import { loadlogin } from '../features/session/sessionSlice'
 
 const Registration = () => {
-  const [ data, setData ] = useState([])
-  const [ booking, setBooking ] = useState()
+  const [ car, setCar ] = useState([])
+  // const [ booking, setBooking ] = useState()
   const getToken = useSelector((state) => state.entities.session.user.token)
   const getID = useSelector((state) => state.entities.session.user.user.id)
+  const [ book, setBook ] = useState({
+    user_id: getID,
+    car_id: '',
+    country: '',
+    date: '',
+  })
 
   const headers = {
     "Authorization": `bearer ${getToken}`
   }
 
+  const handleChange = (e) => {
+    setBook({
+      ...book,
+      [e.target.name]: e.target.value
+    })
+  }
   const getCars = () => {
     axios.get(
-      'http://localhost:3000/trains',
+      'http://localhost:3000/cars',
     { headers: headers},
     ).then((response)=>{
-      setData(response.data);
+      setCar(response.data);
     
     }).catch((error)=>{
       console.log('registration error', error.message)
@@ -32,13 +44,8 @@ const Registration = () => {
 
   const handleSubmit = (e) => {
     axios.post(
-      'http://localhost:3000/bookings',
-      {
-        booking :{
-          user_id: getID,
-          train_id: booking
-        }
-      }
+      'http://localhost:3000/attendances',
+       book
     ,
     { headers: headers},
     ).then((response)=>{
@@ -48,21 +55,26 @@ const Registration = () => {
       console.log('registration error', error.message)
     })
     e.preventDefault();
+
   }
+
   return (
   <div>
    <form onSubmit={handleSubmit}> 
       <select
         className="form-control"
-        onChange={(e) => setBooking(e.target.value)}
+        onChange={handleChange}
+        name='car_id'
       >
         <option key="0" disabled> Choose </option>
-        {data.map((cat) => (
+        {car.map((cat) => (
           <option key={cat.id} value={cat.id}>
             {cat.model}
           </option>
         ))}
       </select>
+      <input type="text" name='country' placeholder="country" onChange={handleChange}/>
+      <input type="date" name='date' onChange={handleChange}/>
       <button type='submit'>Add booking</button>
     </form>
   </div>
