@@ -26,10 +26,13 @@ const Registration = () => {
       "Access-Control-Allow-Origin": "*"
     }
     axios.post(
-      'http://localhost:3000/user',
+      // 'http://localhost:3000/users',
+      // 'https://lit-ridge-70863.herokuapp.com/coaches',
+      'https://shielded-waters-88645.herokuapp.com/users/',
       data
     ,
-    { headers: headers},
+    // { headers: headers},
+    {mode:'cors'}
     ).then((response)=>{
       dispatch(signUp(response.data));
     

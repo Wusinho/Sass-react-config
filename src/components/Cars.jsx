@@ -7,7 +7,6 @@ import { loadlogin } from '../features/session/sessionSlice'
 
 const Registration = () => {
   const [ car, setCar ] = useState([])
-  // const [ booking, setBooking ] = useState()
   const getToken = useSelector((state) => state.entities.session.user.token)
   const getID = useSelector((state) => state.entities.session.user.user.id)
   const [ book, setBook ] = useState({
@@ -18,7 +17,7 @@ const Registration = () => {
   })
 
   const headers = {
-    "Authorization": `bearer ${getToken}`
+    "Authorization": `Bearer ${getToken}`
   }
 
   const handleChange = (e) => {
@@ -29,7 +28,8 @@ const Registration = () => {
   }
   const getCars = () => {
     axios.get(
-      'http://localhost:3000/cars',
+      'https://shielded-waters-88645.herokuapp.com/coaches/',
+      // 'http://localhost:3000/cars',
     { headers: headers},
     ).then((response)=>{
       setCar(response.data);
@@ -40,8 +40,8 @@ const Registration = () => {
   }
   useEffect(()=>{
     getCars()
-  },[])
-
+  },)
+console.log(car)
   const handleSubmit = (e) => {
     axios.post(
       'http://localhost:3000/attendances',

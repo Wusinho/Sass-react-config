@@ -20,7 +20,7 @@ const Registration = () => {
       `http://localhost:3000/users/${getID}`,
     { headers: headers},
     ).then((response)=>{
-      setAppointments(response.data.attendances);
+      setAppointments(response.data.appointments);
     
     }).catch((error)=>{
       console.log('registration error', error.message)
@@ -28,8 +28,8 @@ const Registration = () => {
   }
   useEffect(()=>{
     getApointments()
-  })
-
+  },[])
+console.log(appointments)
   const renderApp = () => 
     appointments.map((book) =>
     <div key={book.id}>
